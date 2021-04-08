@@ -3,10 +3,16 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-if (!isset($_GET['url']))
+if (!isset($_GET['q']))
     exit(json_encode(['error' => 'no url']));
 
-$cmd = 'youtube-dl -f best --geo-bypass --get-url "' . urldecode($_GET['url']) . '" ';
+$q = urldecode($_GET['q']);
+
+if (preg_match('/^https?:\/\//', $q)) {
+    $cmd = 'youtube-dl -f bestaudio --geo-bypass --get-url "' . $q . '" ';
+} else {
+    $cmd = 'youtube-dl -f bestaudio --geo-bypass --get-url "ytsearch1:' . $q . '" ';
+}
 
 $shell = trim(shell_exec($cmd));
 

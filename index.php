@@ -24,7 +24,7 @@
   </style>
 
   <br />
-  <input id="input-link" type="text" placeholder="https://youtu.be/lnAb9dnQCFE" />
+  <input id="input-q" type="text" placeholder="https://youtu.be/lnAb9dnQCFE" />
   <br />
   <button id="get-audio">Play!</button>
   <br />
@@ -37,13 +37,16 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     $("#get-audio").click(function(params) {
-      var link = $("#input-link").val().trim();
-      if (link != "") {
+      var q = $("#input-q").val().trim();
+      q = q.replace("\"", "");
+
+      if (q != "") {
+
         $("#get-audio").prop("disabled", true);
         $("#status-text").text("getting audio...");
 
         var ajaxUrl =
-          "api.php?url=" + encodeURIComponent(link);
+          "api.php?q=" + encodeURIComponent(q);
 
         console.log("sending request to ", ajaxUrl);
 
