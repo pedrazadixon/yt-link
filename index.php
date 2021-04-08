@@ -24,7 +24,7 @@
   </style>
 
   <br />
-  <input id="input-q" type="text" placeholder="https://youtu.be/lnAb9dnQCFE" />
+  <input id="input-q" type="text" placeholder="url or query" />
   <br />
   <button id="get-audio">Play!</button>
   <br />

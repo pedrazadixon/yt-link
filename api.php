@@ -11,7 +11,7 @@ $q = urldecode($_GET['q']);
 if (preg_match('/^https?:\/\//', $q)) {
     $cmd = 'youtube-dl -f bestaudio --geo-bypass --get-url "' . $q . '" ';
 } else {
-    $cmd = 'youtube-dl -f bestaudio --geo-bypass --get-url "ytsearch1:' . $q . '" ';
+    $cmd = 'youtube-dl -f bestaudio --geo-bypass --get-url "ytsearch1:' . $q . ' music" ';
 }
 
 $shell = trim(shell_exec($cmd));
