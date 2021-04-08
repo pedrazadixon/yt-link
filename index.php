@@ -28,7 +28,7 @@
   <br />
   <button id="get-audio">Play!</button>
   <br />
-  <audio id="audio-player" src="" controls></audio>
+  <audio id="audio-player" src="" controls controlsList="nodownload"></audio>
   <br />
   <span id="status-text"></span>
 
