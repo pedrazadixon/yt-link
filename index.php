@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>yt-link</title>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 </head>
 
@@ -23,14 +23,14 @@
     }
   </style>
 
-    <br />
-    <input id="input-link" type="text" placeholder="https://youtu.be/lnAb9dnQCFE" />
-    <br />
-    <button id="get-audio">Play!</button>
-    <br />
-    <audio id="audio-player" src="" controls></audio>
-    <br />
-    <span id="status-text"></span>
+  <br />
+  <input id="input-link" type="text" placeholder="https://youtu.be/lnAb9dnQCFE" />
+  <br />
+  <button id="get-audio">Play!</button>
+  <br />
+  <audio id="audio-player" src="" controls></audio>
+  <br />
+  <span id="status-text"></span>
 
 </body>
 
@@ -43,7 +43,7 @@
         $("#status-text").text("getting audio...");
 
         var ajaxUrl =
-          "http://150.136.155.157/player/api.php?url=" + encodeURIComponent(link);
+          "api.php?url=" + encodeURIComponent(link);
 
         console.log("sending request to ", ajaxUrl);
 
@@ -54,7 +54,11 @@
           success: function(result) {
             if (result.success) {
               console.log("sucess", result);
-              $("#status-text").text("success");
+
+              setTimeout(() => {
+                $("#status-text").text("success");
+              }, 500);
+
               var audio = document.getElementById("audio-player");
               audio.setAttribute("src", result.success);
               audio.load();
@@ -70,7 +74,11 @@
           },
           complete: function() {
             console.log("complete");
-            $("#get-audio").prop("disabled", false);
+
+            setTimeout(() => {
+              $("#get-audio").prop("disabled", false);
+            }, 500);
+
           },
         });
       }
