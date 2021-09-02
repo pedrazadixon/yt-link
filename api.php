@@ -3,6 +3,11 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
+var_dump($_SERVER);
+exit();
+
+// http://150.136.155.157:8090/px?url=
+
 include_once 'foreign_chars.php';
 
 if (!isset($_GET['q']))
